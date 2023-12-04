@@ -23,6 +23,11 @@ namespace Interfejs_SrodkiTransportu
         void jedz();
         void zatrzymaj();
     }
+    interface IWodny
+    {
+        void plyn();
+        void zakotwicz();
+    }
     class Auto : SrodekTransportu, ILadowy
     {
         public Auto(string nazwa) : base(nazwa) { }
@@ -39,23 +44,39 @@ namespace Interfejs_SrodkiTransportu
             return base.ToString();
         }
     }
+    class Statek : SrodekTransportu, IWodny
+    {
+        public Statek(string nazwa) : base(nazwa) { }
+        public void plyn()
+        {
+            Console.WriteLine($"{nazwa} płynie!");
+        }
+        public void zakotwicz()
+        {
+            Console.WriteLine($"{nazwa} zakotwiczył!");
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+    }
     class Amfibia : Auto, IWodny
     {
-
+        public Amfibia(string nazwa) : base(nazwa) { }
+        public void plyn()
+        {
+            Console.WriteLine($"{nazwa} płynie!");
+        }
+        public void zakotwicz()
+        {
+            Console.WriteLine($"{nazwa} zakotwiczył!");
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
-    class Amf : SrodekTransportu, ILadowy, IWodny
-    {
-
-    }
-    class AutoSportowe : Auto
-    {
-
-    }
-    class AutoCiezarowe : SrodekTransportu, ILadowy
-    {
-
-    }
-    
+   
     internal class Program
     {
         static void Main(string[] args)
